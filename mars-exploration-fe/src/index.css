@@ -1,0 +1,124 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(233, 163, 186);
+  color: aliceblue;
+}
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cards-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 40%;
+  margin-top: 4%;
+  flex-wrap: wrap;
+}
+
+.create-map-card, .explore-card {
+  max-width: 55%;
+  margin: 2%;
+}
+
+.create-map-card {
+  width: 15rem;
+  height: 30rem;
+  transition: transform 0.2s;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(254, 236, 142);
+  border-radius: 6px;
+}
+
+.create-map-card:hover {
+  transform: scale(1.05);
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  max-width: 70%;
+  margin: auto;
+  text-align: center;
+  margin-bottom: 8%;
+  font-size: 13px;
+  color: black;
+}
+
+.card-title {
+  font-family: 'Young Serif', serif;
+  font-size: 25px;
+}
+
+#create-map-btn {
+  font-family: 'Young Serif', serif;
+}
+
+.explore-card {
+  width: 15rem;
+  height: 30rem;
+  transition: transform 0.2s;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(194, 229, 235);
+  border-radius: 6px;
+}
+
+.explore-card:hover {
+  transform: scale(1.05);
+}
+
+#explore-btn {
+  font-family: 'Young Serif', serif;
+}
+
+.credits {
+  padding: 10px;
+  border-radius: 6px;
+  font-family: 'Young Serif', serif;
+  background-color: rgb(205, 128, 154);
+  margin-top: 4%;
+}
+
+a {
+  color: aliceblue;
+}
+
+.explore-form {
+  font-family: 'Young Serif', serif;
+  box-shadow: 2px 2px 5px 5px rgba(11, 85, 99, 0.852);
+  margin: auto;
+  margin-top: 5%;
+  max-width: 45%;
+  background-color: rgb(194, 229, 235);
+  color: black;
+  border-radius: 6px;
+  padding: 15px;
+  padding-top: 25px;
+}
+
+.create-map-form {
+  font-family: 'Young Serif', serif;
+  box-shadow: 2px 2px 5px 5px rgba(97, 85, 23, 0.852);
+  margin: auto;
+  margin-top: 10%;
+  max-width: 36%;
+  background-color: rgb(254, 236, 142);
+  color: black;
+  border-radius: 6px;
+  padding: 15px;
+}
+
+.form-control {
+  font-weight: lighter;
+}
