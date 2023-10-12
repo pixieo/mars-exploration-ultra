@@ -22,10 +22,13 @@ public class ExplorationController {
     public void deleteAll() {
         explorationService.deleteAll();
     }
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping
-    public void collectDataFromUser(@RequestBody ExplorationUserInput explorationUserInput) {
+    public ExplorationUserInput collectDataFromUser(@RequestBody ExplorationUserInput explorationUserInput) {
         explorationService.createSimulation(explorationUserInput);
+        return explorationUserInput;
     }
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping
     public List<ExplorationUserInput> getInputs(){
         return explorationService.getAllInputs();
