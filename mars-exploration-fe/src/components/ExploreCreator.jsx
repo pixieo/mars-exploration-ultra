@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import ExploreForm from "./ExploreForm";
 
 const createExplore = (input) => {
-  return fetch("http://localhost:6543/exploration", {
+  return fetch("http://localhost:8080/exploration", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
