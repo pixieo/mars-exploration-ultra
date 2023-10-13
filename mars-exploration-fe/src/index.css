@@ -18,8 +18,8 @@ body {
 .cards-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  width: 40%;
+  justify-content: space-evenly;
+  width: 65%;
   margin-top: 4%;
   flex-wrap: wrap;
 }
