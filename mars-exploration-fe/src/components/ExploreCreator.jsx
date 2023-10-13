@@ -29,7 +29,7 @@ const ExploreCreator = () => {
     createExplore(input)
       .then((result) => {
         console.log("Result:", result);
-        navigate("/result");
+        navigate("/result/explore");
       })
       .catch((err) => {
         console.error("Failure", err);

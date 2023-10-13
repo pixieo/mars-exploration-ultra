@@ -28,7 +28,7 @@ const MapCreator = () => {
     createMap(map)
       .then((result) => {
         console.log("Map created successfully:", result);
-        navigate("/result");
+        navigate("/result/map");
       })
       .catch((err) => {
         console.error("Failed to create map:", err);
