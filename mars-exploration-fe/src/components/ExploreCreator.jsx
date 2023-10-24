@@ -11,7 +11,6 @@ const createExplore = (input) => {
     body: JSON.stringify(input),
   })
   .then((res) => {
-    console.log(res)
     if (!res.ok) {
       throw new Error("Failed.");
     }
@@ -28,7 +27,7 @@ const ExploreCreator = () => {
   const handleExplore = (input) => {
     createExplore(input)
       .then((result) => {
-        console.log("Result:", result);
+        console.log("Exploration created successfully. Id:", result);
         navigate("/result/explore");
       })
       .catch((err) => {
