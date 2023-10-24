@@ -3,7 +3,10 @@ package com.codecool.marsexploration.controller;
 import com.codecool.marsexploration.model.map.MapUserInput;
 import com.codecool.marsexploration.service.map.MapService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 
 import java.io.IOException;
 import java.util.List;
@@ -17,8 +20,9 @@ public class MapGenController {
         this.mapService = mapService;
     }
     @PostMapping
-    public void postMapData(@RequestBody MapUserInput mapUserInput) {
+    public ResponseEntity<Long> postMapData(@RequestBody MapUserInput mapUserInput) {
         mapService.postMapData(mapUserInput);
+        return ResponseEntity.status(HttpStatus.OK).body(mapUserInput.getId());
     }
     @GetMapping
     public List<MapUserInput> getData () {
