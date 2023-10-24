@@ -31,7 +31,7 @@ const MapResult = () => {
         <div>
             <ul>
                 {data.map((item) => (
-                    <li key={item.id}>Item: {item}</li>
+                    <li key={item.id}>Item: {item.id}</li>
                 ))}
             </ul>
         </div>
