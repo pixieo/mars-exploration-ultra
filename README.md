@@ -3,6 +3,8 @@
 ## Project description
 The Mars Exploration App is a web-based platform that combines React for the frontend and a Spring backend, 
 following the MVC design pattern. It offers users the choice to create Martian maps or explore existing ones.
+<img width="1470" alt="Screenshot 2023-10-24 at 4 21 54 PM" src="https://github.com/pixieo/mars-exploration-ultra/assets/111917796/7fff6016-dff8-42c3-91ce-21dc4c98d5ba">
+
 
 ## Key Features
 **Map Generation:** Users can create detailed Martian maps containing mountains (^), pits (#), minerals (*), 
