@@ -3,7 +3,7 @@ import MapForm from "./MapForm";
 import { useNavigate } from "react-router-dom";
 
 const createMap = (map) => {
-  return fetch("/map/create", {
+  return fetch("http://localhost:8080/map", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -27,7 +27,7 @@ const MapCreator = () => {
   const handleCreateMap = (map) => {
     createMap(map)
       .then((result) => {
-        console.log("Map created successfully:", result);
+        console.log("Map created successfully. Id:", result);
         navigate("/result/map");
       })
       .catch((err) => {
