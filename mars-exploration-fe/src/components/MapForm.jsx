@@ -3,77 +3,63 @@ import { Link } from "react-router-dom";
 
 const MapForm = ({ onSave }) => {
     const [step, setStep] = useState(1);
-    const [fileName, setFileName] = useState('my-first-map.map');
-    const [mapWidth, setMapWidth] = useState(45);
-    const [numOfMountains, setNumOfMountains] = useState(2);
-    const [numOfPits, setNumOfPits] = useState(2);
-    const [mountainValues, setMountainValues] = useState([]);
-    const [pitValues, setPitValues] = useState([]);
-    const [numOfMinerals, setNumOfMinerals] = useState(10);
-    const [numOfWaters, setNumOfWaters] = useState(10);
-    const map = {
-        "filePath" : fileName,
-        "mapWidth" : mapWidth,
-        "numOfMountains" : numOfMountains,
-        "mountainSizes" : mountainValues,
-        "numOfPits" : numOfPits,
-        "pitSizes" : pitValues,
-        "numOfMinerals" : numOfMinerals,
-        "numOfWaters" : numOfWaters
-    };
-
-    const onSubmit = (e) => {
-        e.preventDefault();
-        return onSave(map);
-    }
-
-    const handleChange = (e, field, index) => {
-        const newValue = e.target.value;
-    
-        switch (field) {
-          case "fileName":
-            setFileName(newValue);
-            break;
-          case "mapWidth":
-            setMapWidth(newValue);
-            break;
-          case "numOfMountains":
-            setNumOfMountains(newValue);
-            setMountainValues([]);
-            break;
-          case "numOfPits":
-            setNumOfPits(newValue);
-            setPitValues([]);
-            break;
-          case "numOfMinerals":
-            setNumOfMinerals(newValue);
-            break;
-          case "numOfWaters":
-            setNumOfWaters(newValue);
-            break;
-          case "mountain":
-            const updatedMountainValues = [...mountainValues];
-            updatedMountainValues[index] = newValue;
-            setMountainValues(updatedMountainValues);
-            break;
-          case "pit":
-            const updatedPitValues = [...pitValues];
-            updatedPitValues[index] = newValue;
-            setPitValues(updatedPitValues);
-            break;
-          default:
-            break;
-        }
-    }
+    const [formData, setFormData] = useState({
+      fileName: "my-first-map.map",
+      mapWidth: 45,
+      numOfMountains: 2,
+      numOfPits: 2,
+      mountainValues: [],
+      pitValues: [],
+      numOfMinerals: 10,
+      numOfWaters: 10,
+    });
 
     const incrementStep = () => {
-        setStep(step + 1);
+      setStep(step + 1);
     }
 
     const decrementStep = () => {
         setStep(step - 1);
     }
     
+    const handleChange = (e, field, index) => {
+      const { name, value } = e.target;
+      setFormData((prevData) => {
+        const parsedValue = parseInt(value);
+        const updatedArray = [...prevData[field === "mountain" ? "mountainValues" : "pitValues"]];
+        updatedArray[index] = parsedValue;
+    
+        return {
+          ...prevData,
+          [name]: field === "fileName" ? value : parsedValue,
+          [field === "mountain" ? "mountainValues" : "pitValues"]: updatedArray,
+        };
+      });
+    };
+
+    const renderMountainPitInputs = (type) => {
+      const count = type === "mountain" ? formData.numOfMountains : formData.numOfPits;
+  
+      return [...Array(Number(count))].map((_, index) => (
+        <div className="col-md-6" key={index}>
+          <label className="form-label">
+            {type.charAt(0).toUpperCase() + type.slice(1)} {index + 1}
+          </label>
+          <input
+            type="number"
+            name={`${type}_${index}`}
+            className="form-control"
+            onChange={(e) => handleChange(e, type, index)}
+          />
+        </div>
+      ));
+    };
+        
+    const onSubmit = (e) => {
+      e.preventDefault();
+      return onSave(formData);
+    }
+
     return (
         <>
             {step === 1 &&         
@@ -125,32 +111,8 @@ const MapForm = ({ onSave }) => {
             {step === 2 &&        
             <div className="create-map-form">
             <form className="row g-3" onSubmit={onSubmit}>
-                {
-                    [...Array(Number(numOfMountains))].map((_, index) => (
-                        <div className="col-md-6" key={index}>
-                          <label className="form-label">Mountain {index + 1}</label>
-                          <input
-                            type="number"
-                            name={`mountain_${index}`}
-                            className="form-control"
-                            onChange={(e) => handleChange(e, 'mountain', index)}
-                          />
-                        </div>
-                    ))
-                }
-                {
-                    [...Array(Number(numOfPits))].map((_, index) => (
-                        <div className="col-md-6" key={index}>
-                          <label className="form-label">Pit {index + 1}</label>
-                          <input
-                            type="number"
-                            name={`pit_${index}`}
-                            className="form-control"
-                            onChange={(e) => handleChange(e, 'pit', index)}
-                          />
-                        </div>
-                    ))
-                }
+                {renderMountainPitInputs('mountain')}
+                {renderMountainPitInputs('pit')}
                 <div className="col-12 d-flex justify-content-between">
                     <button type="button" className="btn btn-outline-dark" onClick={decrementStep}>Go back</button>
                     <button type="submit" className="btn btn-outline-dark">Submit</button>
