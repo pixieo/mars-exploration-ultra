@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const MapResult = () => {
+const MapResult = ({ clicked }) => {
     const [data, setData] = useState([]);
 
     useEffect(() => {
@@ -28,12 +28,25 @@ const MapResult = () => {
     }, []);
 
     return (
-        <div>
-            <ul>
-                {data.map((item) => (
-                    <li key={item.id}>Item: {item.id}</li>
-                ))}
-            </ul>
+        <div className="result-table">
+            {clicked ? 
+            <table className="table table-danger table-striped table-hover" >
+                <thead>
+                    <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">File name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {data.map((item, index) => (
+                        <tr key={index}>
+                            <th scope="row"> {index} </th>
+                            <td> {item.filePath} </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+            : null}
         </div>
     );
 };

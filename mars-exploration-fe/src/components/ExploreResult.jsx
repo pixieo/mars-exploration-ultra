@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const ExploreResult = () => {
+const ExploreResult = ({ clicked }) => {
     const [data, setData] = useState([]);
 
     useEffect(() => {
@@ -29,11 +29,24 @@ const ExploreResult = () => {
 
     return (
         <div>
-            <ul>
-                {data.map((item) => (
-                    <li key={item.id}>Item id: {item.id}, Rover id: {item.roverId}</li>
-                ))}
-            </ul>
+            {clicked ? 
+            <table className="table table-striped" >
+                <thead>
+                    <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Rover Id</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {data.map((item, index) => (
+                        <tr key={index}>
+                            <th scope="row"> {index} </th>
+                            <td> {item.roverId} </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+            : null}
         </div>
     );
 };
