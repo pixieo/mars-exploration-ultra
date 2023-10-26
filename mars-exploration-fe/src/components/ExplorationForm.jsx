@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const ExploreForm = ({ onSave }) => {
+const ExplorationForm = ({ onSave }) => {
     const onSubmit = (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
@@ -16,7 +16,7 @@ const ExploreForm = ({ onSave }) => {
     }
     
     return (
-        <div className="explore-form">
+        <div className="exploration-form">
             <form className="row g-3" onSubmit={onSubmit}>
                 <div className="col-md-6">
                     <label className="form-label">File path</label>
@@ -72,4 +72,4 @@ const ExploreForm = ({ onSave }) => {
     )
 }
 
-export default ExploreForm;
+export default ExplorationForm;
