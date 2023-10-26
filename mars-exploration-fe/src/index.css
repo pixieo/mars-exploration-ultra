@@ -24,7 +24,7 @@ body {
   flex-wrap: wrap;
 }
 
-.create-map-card, .explore-card {
+.create-map-card, .exploration-card {
   max-width: 55%;
   margin: 2%;
 }
@@ -64,7 +64,7 @@ body {
   font-family: 'Young Serif', serif;
 }
 
-.explore-card {
+.exploration-card {
   width: 15rem;
   height: 30rem;
   transition: transform 0.2s;
@@ -74,11 +74,11 @@ body {
   border-radius: 6px;
 }
 
-.explore-card:hover {
+.exploration-card:hover {
   transform: scale(1.05);
 }
 
-#explore-btn {
+#exploration-btn {
   font-family: 'Young Serif', serif;
 }
 
@@ -94,7 +94,7 @@ a {
   color: aliceblue;
 }
 
-.explore-form {
+.exploration-form {
   font-family: 'Young Serif', serif;
   box-shadow: 2px 2px 5px 5px rgba(11, 85, 99, 0.852);
   margin: auto;
