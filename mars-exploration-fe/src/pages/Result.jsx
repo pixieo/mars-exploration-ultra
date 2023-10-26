@@ -9,13 +9,18 @@ const Result = () => {
     const [clicked, setClicked] = useState(false);
     return (
         <div className="result-container">
-            <div className="result-container-img-btns"> 
-                <p>Data successfully submited!</p>
-                <img src={worker} alt="A GIF of a man working"/>
+            {!clicked ?             
+                <div className="result-container-img-btns"> 
+                    <p>Data successfully submited!</p>
+                    <img src={worker} alt="A GIF of a man working"/>
+                        <button type="button" className="btn btn-outline-light" onClick={() => setClicked(!clicked)}>Show data</button>
+                        <Link to="/" type="button" className="btn btn-outline-light">Go back home</Link>  
+                </div>
+            :   <div>
                     <button type="button" className="btn btn-outline-light" onClick={() => setClicked(!clicked)}>Show data</button>
                     <Link to="/" type="button" className="btn btn-outline-light">Go back home</Link>
-                
-            </div>
+                </div>
+            }
             {location.pathname === '/result/map' && <MapResult clicked={clicked}/>}
             {location.pathname === '/result/exploration' && <ExplorationResult clicked={clicked}/>}
         </div>
