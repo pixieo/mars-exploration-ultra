@@ -11,7 +11,7 @@ const Home = () => {
                     <img src={drawMapGif} className="card-img-top" alt="A GIF of a hand drawing a map"/>
                     <div className="card-body">
                         <h5 className="card-title">Create your own map</h5>
-                        <p className="card-text">Use your imagination and create a brand new map that you can exploration later.</p>
+                        <p className="card-text">Use your imagination and create a brand new map that you can explore later.</p>
                         <Link to="/map" type="button" className="btn btn-dark" id="create-map-btn">Create map</Link>
                     </div>
                 </div>

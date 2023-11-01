@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 const MapForm = ({ onSave }) => {
     const [step, setStep] = useState(1);
     const [formData, setFormData] = useState({
-      fileName: "my-first-map.map",
+      filePath: "my-first-map.map",
       mapWidth: 45,
       numOfMountains: 2,
       numOfPits: 2,
-      mountainValues: [],
-      pitValues: [],
+      mountainSizes: [],
+      pitSizes: [],
       numOfMinerals: 10,
       numOfWaters: 10,
     });
@@ -26,13 +26,13 @@ const MapForm = ({ onSave }) => {
       const { name, value } = e.target;
       setFormData((prevData) => {
         const parsedValue = parseInt(value);
-        const updatedArray = [...prevData[field === "mountain" ? "mountainValues" : "pitValues"]];
+        const updatedArray = [...prevData[field === "mountain" ? "mountainSizes" : "pitSizes"]];
         updatedArray[index] = parsedValue;
     
         return {
           ...prevData,
-          [name]: field === "fileName" ? value : parsedValue,
-          [field === "mountain" ? "mountainValues" : "pitValues"]: updatedArray,
+          [name]: field === "filePath" ? value : parsedValue,
+          [field === "mountain" ? "mountainSizes" : "pitSizes"]: updatedArray,
         };
       });
     };
@@ -57,6 +57,8 @@ const MapForm = ({ onSave }) => {
         
     const onSubmit = (e) => {
       e.preventDefault();
+    console.log(formData);
+
       return onSave(formData);
     }
 
@@ -67,9 +69,9 @@ const MapForm = ({ onSave }) => {
                 <form className="row g-3">
                     <div className="col-md-6">
                         <label className="form-label">File name</label>
-                        <input type="text" name="fileName" className="form-control"
+                        <input type="text" name="filePath" className="form-control"
                         defaultValue={"my-first-map.map"} 
-                        onChange={(e) => handleChange(e, 'fileName')}/>
+                        onChange={(e) => handleChange(e, 'filePath')}/>
                     </div>
                     <div className="col-md-6">
                         <label className="form-label">Map width</label>
