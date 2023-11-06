@@ -170,4 +170,5 @@ a {
   max-height: 370px;
   overflow: auto;
   border-radius: 6px 6px;
+  font-size: small;
 }

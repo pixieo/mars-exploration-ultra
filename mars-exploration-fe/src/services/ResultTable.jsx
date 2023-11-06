@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react";
 
+const deleteById = (id) => {
+    return fetch(`http://localhost:8080/map/delete/${id}`, { method: "DELETE" }).then((res) =>
+    res.json()
+    );
+}
+
 const ResultTable = ({ endpoint, clicked, columns, property }) => {
     const [data, setData] = useState([]);
 
@@ -27,6 +33,16 @@ const ResultTable = ({ endpoint, clicked, columns, property }) => {
         fetchData();
     }, [endpoint]);
 
+    const handleDelete = (id) => {
+        deleteById(id).catch((err) => {
+            console.log(err);
+        });
+
+        setData((elements) => {
+            return elements.filter((element) => element.id !== id);
+        });
+    }
+
     return (
         <div className="result-table">
             {clicked ? 
@@ -35,7 +51,9 @@ const ResultTable = ({ endpoint, clicked, columns, property }) => {
                     <tr>
                         {columns.map((col, index) => (
                             <th key={index} scope="col">{col}</th>
+                            
                         ))}
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -43,6 +61,10 @@ const ResultTable = ({ endpoint, clicked, columns, property }) => {
                         <tr key={index}>
                             <th scope="rox">{index + 1}</th>
                             <td key={index}>{item[property]}</td>
+                            <td>
+                                <button type="button" className="btn btn-sm btn-outline-dark" >Run</button>
+                                <button type="button" className="btn btn-sm btn-outline-dark" onClick={() => handleDelete(item.id)}>Delete</button>
+                            </td>
                         </tr>
                     ))}
                 </tbody>
