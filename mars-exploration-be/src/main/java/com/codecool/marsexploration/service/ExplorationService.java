@@ -64,4 +64,7 @@ public class ExplorationService {
         }
     }
 
+    public void deleteById(Long id) {
+        explorationRepository.deleteById(id);
+    }
 }

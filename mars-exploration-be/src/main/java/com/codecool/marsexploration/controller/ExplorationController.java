@@ -40,6 +40,11 @@ public class ExplorationController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to start exploration.");
         }
     }
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<String> deleteExploration(@PathVariable Long id) {
+        explorationService.deleteById(id);
+        return ResponseEntity.status(HttpStatus.OK).body("Exploration deleted successfully.");
+    }
 }
 
 
