@@ -32,5 +32,8 @@ public class MapGenController {
     public void getMap(@PathVariable Long id) throws IOException {
         mapService.createMap(id);
     }
-
+    @DeleteMapping("/delete/{id}")
+    public void deleteMap (@PathVariable Long id) {
+        mapService.deleteById(id);
+    }
 }

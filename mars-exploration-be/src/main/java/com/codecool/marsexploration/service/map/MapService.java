@@ -53,4 +53,8 @@ public class MapService {
             }
         }
     }
+
+    public void deleteById (Long id) {
+        mapRepository.deleteById(id);
+    }
 }
