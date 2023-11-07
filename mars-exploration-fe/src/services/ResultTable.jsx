@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 
-const deleteById = (id) => {
-    return fetch(`http://localhost:8080/map/delete/${id}`, { method: "DELETE" }).then((res) =>
-    res.json()
-    );
+const deleteById = (endpoint, id) => {
+    return fetch(`${endpoint}/delete/${id}`, { method: "DELETE" });
 }
 
 const ResultTable = ({ endpoint, clicked, columns, property }) => {
@@ -33,8 +31,9 @@ const ResultTable = ({ endpoint, clicked, columns, property }) => {
         fetchData();
     }, [endpoint]);
 
-    const handleDelete = (id) => {
-        deleteById(id).catch((err) => {
+    const handleDelete = (endpoint, id) => {
+        deleteById(endpoint, id)
+        .catch((err) => {
             console.log(err);
         });
 
@@ -61,9 +60,9 @@ const ResultTable = ({ endpoint, clicked, columns, property }) => {
                         <tr key={index}>
                             <th scope="rox">{index + 1}</th>
                             <td key={index}>{item[property]}</td>
-                            <td>
+                            <td className="table-buttons">
                                 <button type="button" className="btn btn-sm btn-outline-dark" >Run</button>
-                                <button type="button" className="btn btn-sm btn-outline-dark" onClick={() => handleDelete(item.id)}>Delete</button>
+                                <button type="button" className="btn btn-sm btn-outline-dark" onClick={() => handleDelete(endpoint, item.id)}>Delete</button>
                             </td>
                         </tr>
                     ))}

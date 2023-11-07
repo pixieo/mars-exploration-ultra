@@ -170,5 +170,11 @@ a {
   max-height: 370px;
   overflow: auto;
   border-radius: 6px 6px;
-  font-size: small;
+}
+
+.table-buttons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
 }
